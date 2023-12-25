@@ -57,6 +57,10 @@ body{
     font-family: "Abril Fatface";
     text-align:center;
 }
+.certify {
+    margin-left: 20vh !important;
+    margin-right: 20vh !important;
+}
 @media (max-width: 768px){
 .img_intro{
     justify-content:center;
@@ -67,6 +71,18 @@ body{
 .name_intro{
     text-align:center;
 }
+.certify {
+    margin-left: 5vh !important;
+    margin-right: 5vh !important;
+}
+}
+
+
+@media (max-width: 540px){
+    .certify {
+        margin-left: 1vh !important;
+        margin-right: 1vh !important;
+    }
 }
 
 .nav_bar{
