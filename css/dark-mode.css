@@ -1,30 +1,34 @@
 * {
     font-family: "Poppins";
     font-weight: 300;
-    transition: all 0.5s ease;
+    color:white;
+    transition: all 1s ease;
 }
 body{
-    background-color: #F6F5F2 !important;
+    background-color: #cdbda6!important;
 }
 
 .bg_intro {
-    background-color: #EBE1C9 !important;
+    background-color: #2e2c28 !important;
     background-size: cover;
 }
 .text_nav{
-    color:#808080 !important;   
+    color: white !important;   
 }
 .text_nav.active{
-    background-color: #F6F5F2 !important;
+    background-color: #beae97 !important;
     color: black !important;
     font-weight: 500;
     line-height: 1.2;
+    border-color:#766d5a !important;
 }
 .intro{
     align-items: center;
     height: 95%;
 }
-
+.nav-svg{
+    fill: white;
+}
 .text_intro{
     text-align: end;
 }
@@ -39,9 +43,11 @@ body{
     padding-right: 0 !important;
     animation: typing 2s steps(11), blink-caret 0.5s infinite step-end alternate;
     overflow: hidden;
+    color: #fff5de;
 }
 .title_intro span{
     font-weight: 200;
+    color: white;
 }
 @keyframes typing {
     from { width: 0 }
@@ -57,6 +63,7 @@ body{
     font-size: 4rem;
     font-family: "Abril Fatface";
     text-align:center;
+    color: #f8eccf
 }
 .certify {
     margin-left: 20vh !important;
@@ -94,7 +101,7 @@ body{
 }
 
 .icon {
-    fill:darkslategrey;
+    fill: #fff5de ;
 }
 .icon_pos{
     height: 33%;
@@ -110,7 +117,7 @@ body{
     padding: 15px 15px 15px 15px;
 }
 .footer svg{
-    fill: #EBE1C9;
+    fill: #EBE1C9 !important;
 }
 
 .footer_txt{
@@ -125,7 +132,7 @@ body{
 }
 
 .boton{
-    border: 1px solid rgb(61, 53, 43) !important;
+    border: 1px solid rgb(254, 254, 253) !important;
 }
 .boton:hover{
     background-color: rgb(61, 53, 43) !important;
@@ -133,7 +140,7 @@ body{
     
 }
 .boton p{
-    color: rgb(61, 53, 43);
+    color: rgb(238, 232, 225);
     font-weight: 300;
 }
 
@@ -147,7 +154,7 @@ body{
 }
 
 .cabecera{
-    background-color:#fceece !important;
+    background-color:#a8925e !important;
 }
 .video-container {
     position: relative;
@@ -178,7 +185,7 @@ body{
 }
 
 .stars{
-    fill: #786940;
+    fill: #c7b070;
 }
 
 .icon-skills{
@@ -224,70 +231,21 @@ body{
   .lang:hover .lang-content {display: block;}
 
 
-/* Modo oscuro para el texto de navegación */
-.text_nav.dark-mode{
-    color:#fff !important;   
+
+
+.card-body_dark{
+    background-color: #2e2c28 !important;
+    border-color: white !important;
 }
 
-/* Modo oscuro para el fondo de introducción */
-.bg_intro.dark-mode {
-    background-color: #000 !important;
+.card2{
+    border-radius: 6px;
+    border: 1px solid rgb(103, 102, 100);
+}
+.card-title{
+    color: #ebdbb8 !important;
 }
 
-/* Modo oscuro para el pie de página */
-.footer.dark-mode{
-    background-color: #000;
+.subtxt-card{
+    color:#797878 !important;
 }
-
-/* Modo oscuro para el texto del pie de página */
-.footer_txt.dark-mode{
-    color:#fff5de;
-}
-
-/* Modo oscuro para el contenido */
-.content.dark-mode{
-    border-color: #808080;
-}
-
-/* Modo oscuro para el botón */
-.boton.dark-mode{
-    border-color: #fff !important;
-}
-.boton:hover.dark-mode{
-    background-color: #fff !important;
-    color: #000 !important;
-}
-.boton p.dark-mode{
-    color: #fff;
-}
-.boton:hover p.dark-mode{
-    color: #000 !important;
-}
-
-/* Modo oscuro para el enlace */
-.link.dark-mode {
-    color:#fff;
-}
-
-/* Modo oscuro para la cabecera */
-.cabecera.dark-mode{
-    background-color:#000 !important;
-}
-
-/* Modo oscuro para las estrellas */
-.stars.dark-mode{
-    fill: #fff;
-}
-
-/* Modo oscuro para el contenido del menú desplegable */
-.lang-content.dark-mode {
-    background-color: #000;
-}
-
-/* Modo oscuro para los enlaces dentro del menú desplegable */
-.lang-content a.dark-mode {
-    color: #fff;
-}
-
-/* Modo oscuro para los enlaces dentro del menú desplegable al pasar el ratón por encima */
-.lang-content a:hover.dark-mode {background-color: #ddd;}

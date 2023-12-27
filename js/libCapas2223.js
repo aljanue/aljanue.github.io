@@ -67,8 +67,18 @@ function Cargar(url, capa)
 } 
 
 
-
-
+function changeStylesheet() {
+    var stylesheet = document.getElementById('stylesheet');
+    if (stylesheet.getAttribute('href') == '../css/styles.css') {
+        stylesheet.setAttribute('href', '../css/dark-mode.css');
+    } else if (stylesheet.getAttribute('href') == './css/styles.css'){
+			stylesheet.setAttribute('href', './css/dark-mode.css');
+	}else if(stylesheet.getAttribute('href') == './css/dark-mode.css'){
+			stylesheet.setAttribute('href', './css/styles.css');
+	}else if(stylesheet.getAttribute('href') == '../css/dark-mode.css'){
+        stylesheet.setAttribute('href', '../css/styles.css');
+	}
+}
 
 
 
