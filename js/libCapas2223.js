@@ -1,5 +1,6 @@
 //Javascript
-             
+
+
 function invokeScript(divid)
 {
 	var scriptObj = divid.getElementsByTagName("SCRIPT");
@@ -67,17 +68,51 @@ function Cargar(url, capa)
 } 
 
 
+
+let dark;
+document.addEventListener("DOMContentLoaded", function() {
+    var dark_aux = localStorage.getItem('dark');
+	
+    if (dark_aux !== null) {
+		dark = dark_aux ==='true';
+	}
+	var elementos = document.querySelectorAll('*');
+
+	elementos.forEach(function(elemento) {
+		elemento.style.transition = "";
+	});
+	var stylesheet = document.getElementById('stylesheet');
+	if(dark == true){
+        if(stylesheet.getAttribute('href') === '../css/styles.css')
+			stylesheet.setAttribute('href', '../css/dark-mode.css');
+		else if(stylesheet.getAttribute('href') === './css/styles.css')
+			stylesheet.setAttribute('href', './css/dark-mode.css');
+	}
+});
+
 function changeStylesheet() {
+	var elementos = document.querySelectorAll('*');
+	elementos.forEach(function(elemento) {
+		elemento.style.transition = "all 1s ease";
+	});
     var stylesheet = document.getElementById('stylesheet');
     if (stylesheet.getAttribute('href') == '../css/styles.css') {
         stylesheet.setAttribute('href', '../css/dark-mode.css');
+        dark = true;
+        localStorage.setItem('dark', true);
     } else if (stylesheet.getAttribute('href') == './css/styles.css'){
-			stylesheet.setAttribute('href', './css/dark-mode.css');
-	}else if(stylesheet.getAttribute('href') == './css/dark-mode.css'){
-			stylesheet.setAttribute('href', './css/styles.css');
-	}else if(stylesheet.getAttribute('href') == '../css/dark-mode.css'){
+        dark = true;
+        stylesheet.setAttribute('href', './css/dark-mode.css');
+        localStorage.setItem('dark', true);
+    } else if(stylesheet.getAttribute('href') == './css/dark-mode.css'){
+        dark = false;
+        stylesheet.setAttribute('href', './css/styles.css');
+        localStorage.setItem('dark', false);
+    } else if(stylesheet.getAttribute('href') == '../css/dark-mode.css'){
+        dark = false;
         stylesheet.setAttribute('href', '../css/styles.css');
-	}
+        localStorage.setItem('dark', false);
+    }
 }
 
 
