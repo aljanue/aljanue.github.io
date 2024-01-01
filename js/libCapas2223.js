@@ -114,36 +114,7 @@ function changeStylesheet() {
         localStorage.setItem('dark', false);
     }
 }
-document.addEventListener('DOMContentLoaded', function () {
-	const photo = document.querySelector('.me');
-	const height = photo.clientHeight
-	const width = photo.clientWidth
-	photo.addEventListener('mousemove', (evt)=>{
-		const {layerX, layerY} = evt
-		const yRotation = (
-			((layerX-width)/2)/width
-		)*20
-		const xRotation = (
-			((layerY-height)/2)/height
-		)*20
 
-		const string = `
-			perspective(500px)
-			scale()
-			rotateX(${xRotation}deg)
-			rotateY(${yRotation}deg)
-		`
-		photo.style.transform = string
-	})
-	photo.addEventListener('mouseout',()=>{
-		photo.style.transform = `
-			perspective(500px)
-			scale(1)
-			rotateX(0)
-			rotateY(0)
-			`
-	})
-});
 
 
 
