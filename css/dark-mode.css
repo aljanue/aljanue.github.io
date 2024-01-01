@@ -12,6 +12,35 @@ body{
     background-color: #2e2c28 !important;
     background-size: cover;
 }
+.me {
+    position: relative;
+    height:fit-content;
+    width:fit-content;
+    transition: box-shadow 0.1s;
+}
+
+.me img {
+    width: 30vh;
+    height: auto;
+    border-radius: 30px;
+    transition: all 1s ease;
+}
+
+.me img:last-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.me:hover img:last-child {
+    opacity: 1;
+    width: 100%;
+    box-shadow: 0px 0px 20px #cdbda6;
+}
+.me:hover img:first-child {
+    opacity: 0;
+}
 .text_nav{
     color: white !important;   
 }
