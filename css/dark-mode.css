@@ -6,6 +6,11 @@
 }
 body{
     background-color: #cdbda6!important;
+    cursor: url('../images/cursor_dark.svg'), auto;
+
+}
+a, button, svg, iframe{
+    cursor: url('../images/cursor_selec_dark.svg'), auto !important;
 }
 
 .bg_intro {

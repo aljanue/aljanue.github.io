@@ -5,6 +5,10 @@
 }
 body{
     background-color: #F6F5F2 !important;
+    cursor: url('../images/cursor_2.svg'), auto;
+}
+a, button, svg, iframe{
+    cursor: url('../images/cursor_selec_2.svg'), auto !important;
 }
 
 .bg_intro {
