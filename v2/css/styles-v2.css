@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -5,9 +6,58 @@
     font-family: "Poppins", sans-serif;
     font-weight: 300;
     font-style: normal;
-    transition:all,0.3s, ease;
+    
+}
+@keyframes fadeIn {
+    from {
+        scale:50%;
+        opacity: 0;
+    }
+    to {
+        scale: 100%;
+        opacity: 1;
+    }
+}
+.animation-card1{
+    animation: fadeIn 1s ease-in-out both;
 }
 
+@keyframes show{
+    from{
+        opacity: 0;
+        scale: 0%;
+    }
+    to{
+        opacity: 1;
+        scale: 100%;
+    }
+}
+.animation{
+    view-timeline-name: --projects;
+    view-timeline-axis: block;
+    animation-timeline: --projects;
+    animation-name: show;
+    animation-range: entry 0% cover 11%;
+    animation-fill-mode: both;
+}
+@keyframes show-right{
+    from{
+        opacity: 0;
+        transform: translateX(-200%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+.animation-right{
+    view-timeline-name: --skills;
+    view-timeline-axis: block;
+    animation-timeline: --skills;
+    animation-name: show-right;
+    animation-range: entry 0% cover 12%;
+    animation-fill-mode: both;
+}
 body {
     cursor: url('../images/cursor.svg'), auto; /* Reemplaza 'cursor.png' con la ruta a tu imagen de cursor */
 }
@@ -38,6 +88,7 @@ a:hover, button:hover {
     object-fit: fill;
     z-index: 1;
     filter: brightness(0.5);
+    view-timeline-name: --none;
 }
 
 .card-content{
@@ -175,11 +226,11 @@ a:hover, button:hover {
     color: white;
     font-weight: 100;
     font-size:1.2rem;
-    transition: transform 0.3s ease; /* Ajusta la duración y la función de easing según tus necesidades */
+    transition: transform 0.3s ease; 
 }
 
 .project-type p:hover {
-    transform: scale(1.3); /* Ajusta el factor de escala según tus necesidades */
+    transform: scale(1.3); 
     font-weight: 500;
     cursor: url('../images/cursor-big.svg'), auto !important;
 }
@@ -189,11 +240,16 @@ a:hover, button:hover {
     height:auto !important;
 }
 
-.skill{
-    transition: transform 0.15s ease;
+@keyframes skills {
+    from {
+        scale:100%;
+    }
+    to {
+        scale: 130%;
+    }
 }
 .skill:hover{
-    transform: scale(1.3);
+    animation: skills 0.2s ease-in-out both;
     cursor: url('../images/cursor-big.svg'), auto !important;
 }
 @media screen and (max-width: 450px) {
@@ -211,8 +267,33 @@ a:hover, button:hover {
 .stars{
     fill: rgb(108, 107, 107);
 }
+.certification-list{
+    display:flex;
+    width: 100%;
+    justify-content: center;
+}
+.certification{
+    list-style-type: none;
+    padding: 20px 0px;
+    font-size: 1.3rem;
+    font-weight: 200;
+    transition: transform 0.3s ease; 
+}
+@media screen and (max-width: 450px){
+    .certification{
+        padding: 10px 10% 10px 0;
+    }
+    .certification-list{
+        justify-content: start;
+    }
+}
 
 
+.certification:hover {
+    transform: translateX(14%) scale(1.3); 
+    font-weight: 500;
+    cursor: url('../images/cursor-big.svg'), auto !important;
+}
 
 
 
