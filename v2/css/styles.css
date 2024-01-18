@@ -57,7 +57,6 @@ a:hover, button:hover {
     position: absolute;
     bottom: 0;
     left: 50%;
-    width: 100%;
     transform: translateX(-50%);
     display: flex;
     justify-content: center;
@@ -72,8 +71,25 @@ a:hover, button:hover {
     cursor: url('../images/cursor-big.svg'), auto;
     
 }
-.arrow:checked{
-    fill-opacity: 0;
+.arrow-back {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    align-items: center;
+    transition: all 0.3s ease;
+    fill: white;
+    fill-opacity: 0.5;
+    opacity: 0.5;
+    padding-left: 80px;
+}
+.arrow-back:hover {
+    transform: translateX(22%) scale(1.5);
+    fill-opacity: 1;
+    opacity: 1;
+    cursor: url('../images/cursor-big.svg'), auto;
 }
 .portfolio{
     position: absolute;
