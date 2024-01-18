@@ -83,7 +83,7 @@ a:hover, button:hover {
     fill: white;
     fill-opacity: 0.5;
     opacity: 0.5;
-    padding-left: 80px;
+    padding-left: 8%;
 }
 .arrow-back:hover {
     transform: translateX(22%) scale(1.5);
