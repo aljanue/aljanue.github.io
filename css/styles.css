@@ -297,30 +297,6 @@ a, button, svg, iframe{
     color: #000 !important;
 }
 
-/* Modo oscuro para el enlace */
-.link.dark-mode {
-    color:#fff;
+.v2{
+    color:#786940;
 }
-
-/* Modo oscuro para la cabecera */
-.cabecera.dark-mode{
-    background-color:#000 !important;
-}
-
-/* Modo oscuro para las estrellas */
-.stars.dark-mode{
-    fill: #fff;
-}
-
-/* Modo oscuro para el contenido del menú desplegable */
-.lang-content.dark-mode {
-    background-color: #000;
-}
-
-/* Modo oscuro para los enlaces dentro del menú desplegable */
-.lang-content a.dark-mode {
-    color: #fff;
-}
-
-/* Modo oscuro para los enlaces dentro del menú desplegable al pasar el ratón por encima */
-.lang-content a:hover.dark-mode {background-color: #ddd;}
