@@ -502,7 +502,77 @@ a:hover, button:hover {
         top: 30%;
     }
 }
+.container-carousel {
+    width: 45vw;
+    height: auto;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    height:0;
+}
+.video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.carousel{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
 
+.content{
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    top:0;
+    left:0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display:flex;
+    flex-direction: column;
+    transition: 0.6s;
+}
+.content-title{
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 4%;
+    padding-bottom: 3%;
+    text-align: center;
+    border-bottom: 1.5px white solid;
+}
+.content-software{
+    width: 15%;
+    height: auto;
+    padding: 10px;
+}
+.content:hover{
+    opacity: 1;
+}
+
+/* Estilos para pantallas de tamaño mediano (tabletas, 768px y hasta 1024px) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container-carousel {
+        width: 65vw;
+    }
+}
+
+/* Estilos para pantallas de tamaño pequeño (teléfonos móviles, menos de 768px) */
+@media only screen and (max-width: 767px) {
+    .container-carousel {
+        width: 90vw;
+    }
+}
 
 .green-skill{
     background-color: #c3eab1;
@@ -546,3 +616,6 @@ a:hover, button:hover {
 }
 
 
+.contact-icon{
+    fill: white;
+}
