@@ -40,6 +40,16 @@
     animation-range: entry 0% cover 11%;
     animation-fill-mode: both;
 }
+.animation2{
+    view-timeline-name: --about-me;
+    view-timeline-axis: block;
+    animation-timeline: --about-me;
+    animation-name: show;
+    animation-range: entry 0% cover 5%;
+    animation-fill-mode: both;
+
+}
+
 @keyframes show-right{
     from{
         opacity: 0;
@@ -288,17 +298,210 @@ a:hover, button:hover {
         justify-content: start;
     }
 }
-
-
 .certification:hover {
     transform: translateX(14%) scale(1.3); 
     font-weight: 500;
     cursor: url('../images/cursor-big.svg'), auto !important;
 }
+.about-me1{
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: rgb(200, 200, 200);
+}
+.about-me1 span{
+    font-weight: 600;
+    color: white;
+}
+.thing1 {
+    position: absolute;
+    top: 75%;
+    left: 73%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing1:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing2 {
+    position: absolute;
+    top: 60%;
+    left: 8%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing2:hover{
+    color: white;
+    transform: scale(130%);
+}
 
+.thing3 {
+    position: absolute;
+    top: 26%;
+    left: 70%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing3:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing4{
+    position: absolute;
+    top:70%;
+    left: 53%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing4:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing5{
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing5:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing6{
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing6:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing7{
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing7:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing8{
+    position: absolute;
+    top: 80%;
+    left: 20%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing8:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing9{
+    position: absolute;
+    top: 20%;
+    left:15%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing9:hover{
+    color: white;
+    transform: scale(130%);
+}
+.thing10{
+    position: absolute;
+    top: 60%;
+    left: 70%;
+    text-align:center;
+    color:rgb(147, 146, 146);
+    transform: scale(100%);
+    transition: all 0.3s ease;
+}
+.thing10:hover{
+    color: white;
+    transform: scale(130%);
+}
+@media screen and (max-width: 890px){
+    .thing3 {
+        top: 22%;
+        left: 40%;
+    }
+    .thing7{
+        left:70%;
+    }
+    .thing5{
+        top: 35%;
+    }
+}
+@media screen and (max-width: 510px){
 
-
-
+    .thing1{
+        top: 80%;
+        left: 75%;
+    }
+    .thing2{
+        top: 65%;
+    }
+    .thing4{
+        top: 75%;
+    }
+    
+}
+@media screen and (max-width: 450px){
+    .thing4{
+        top:73%;
+        left: 53%;
+    }
+    .thing1{
+        top: 80%;
+        left: 68%;
+    }
+    .thing2{
+        top: 67%;
+    }
+    .thing6{
+        top: 15%;
+        left: 50%;
+    }
+    .thing3{
+        top:25%;
+    }
+    .thing10{
+        top: 65%;
+    }
+    .thing7{
+        top:30%;
+        left: 60%;
+    }
+    .thing5{
+        top: 30%;
+    }
+}
 
 
 .green-skill{
