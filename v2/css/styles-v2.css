@@ -507,6 +507,7 @@ a:hover, button:hover {
     height: auto;
     overflow: hidden;
     border-radius: 15px;
+    box-shadow: 20px 20px 20px 0px rgba(0, 0, 0, 1);
 }
 .video-container {
     position: relative;
@@ -525,6 +526,7 @@ a:hover, button:hover {
     display: flex;
     width: 100%;
     height: auto;
+    
 }
 
 .content{
