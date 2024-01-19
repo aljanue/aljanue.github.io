@@ -550,6 +550,7 @@ a:hover, button:hover {
     padding-bottom: 3%;
     text-align: center;
     border-bottom: 1.5px white solid;
+    color: white;
 }
 .content-software{
     width: 15%;
