@@ -249,6 +249,7 @@ a:hover, button:hover {
     }
 }
 .skill:hover{
+    z-index: 99;
     animation: skills 0.2s ease-in-out both;
     cursor: url('../images/cursor-big.svg'), auto !important;
 }
