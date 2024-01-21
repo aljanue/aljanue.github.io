@@ -52,7 +52,7 @@ function chargeLanguage() {
     console.log('Valor de language:', language); // Imprime el valor de language
     console.log('Valor de window.location.href:', window.location.href); // Imprime el valor de window.location.href
     
-    if(language == 'en' && window.location.href == dom+'/index.html'){
+    if(language == 'en' && (window.location.href == dom+'/index.html' || window.location.href == dom+'/')){
         console.log('Redirigiendo a ./en/index.html'); // Imprime un mensaje antes de redirigir
         window.location.href = dom+'/en/index.html';
     }
