@@ -1,7 +1,7 @@
 
 
 let language;
-let dom = 'aljanue.github.io';
+let dom = 'https//aljanue.github.io';
 
 
 
