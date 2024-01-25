@@ -325,6 +325,9 @@ a:hover, button:hover {
     width: 100%;
     justify-content: center;
 }
+.certification-list ul{
+    min-width: 27%;
+}
 .certification{
     list-style-type: none;
     padding: 20px 0px;
