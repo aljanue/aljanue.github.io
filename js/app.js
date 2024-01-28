@@ -40,7 +40,9 @@ document.addEventListener('contentLoaded', function() {
     if (carousel) {
         scroll.scrollIntoView({ behavior: 'smooth' });
     }
-    localStorage.setItem('web_opened', false);
+    if(localStorage.getItem('web_opened')){
+        localStorage.removeItem('web_opened');
+    }
 });
 
 
@@ -81,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
 function chargeLanguage() {
     var language_aux = localStorage.getItem('language');
