@@ -16,7 +16,6 @@ function Cargar(url, capa) {
         {
             contenido.innerHTML = conexion.responseText;
             invokeScript(document.getElementById(capa));
-            // Disparar el evento cuando el contenido se haya cargado
             document.dispatchEvent(event);
         }
     } 
@@ -49,16 +48,6 @@ document.addEventListener('contentLoaded', function() {
 function setWebOpened(b){
     localStorage.setItem('web_opened', b);
 }
-
-
-document.addEventListener('mouseover', function(e) {
-    var body = document.body;
-    if (window.getComputedStyle(e.target).cursor === 'pointer') {
-        body.classList.add('cursor-big');
-    } else {
-        body.classList.remove('cursor-big');
-    }
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     var flechas = document.querySelectorAll('.arrow svg');
