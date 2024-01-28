@@ -1,9 +1,52 @@
-
-
+let web_opened=false;
 let language;
 let dom = 'https://aljanue.github.io';
 
+// Crear un nuevo evento
+var event = new Event('contentLoaded');
 
+function Cargar(url, capa) {
+    var contenido = document.getElementById(capa);
+    var conexion = nuevaConexion();
+
+    conexion.open("GET", url,true);
+    conexion.onreadystatechange=function()
+    { 
+        if((conexion.readyState == 4) && (conexion.status == 200))
+        {
+            contenido.innerHTML = conexion.responseText;
+            invokeScript(document.getElementById(capa));
+            // Disparar el evento cuando el contenido se haya cargado
+            document.dispatchEvent(event);
+        }
+    } 
+    conexion.send(null);
+}
+
+function setProjectOpened(){
+    let web_opened = localStorage.getItem('web_opened') === 'true';
+    if(web_opened){
+        Cargar('./html/webs.html', 'projects');
+    }
+    else{
+        Cargar('./html/projects.html', 'projects')
+    }
+}
+
+// Escuchar el evento y hacer scroll hasta el carrusel cuando el contenido se haya cargado
+document.addEventListener('contentLoaded', function() {
+    let carousel = document.querySelector('.carousel');
+    let scroll = document.getElementById('project');
+    if (carousel) {
+        scroll.scrollIntoView({ behavior: 'smooth' });
+    }
+    localStorage.setItem('web_opened', false);
+});
+
+
+function setWebOpened(b){
+    localStorage.setItem('web_opened', b);
+}
 
 
 document.addEventListener('mouseover', function(e) {
@@ -20,12 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     flechas.forEach(function(flecha) {
         flecha.addEventListener('click', function() {
-            console.log('Evento de clic disparado'); // Verifica que el evento de clic se está disparando
 
             var cardActual = this.closest('.cards');
             var siguienteCard = cardActual ? cardActual.nextElementSibling : null;
 
-            console.log('Siguiente card:', siguienteCard); // Verifica el valor de siguienteCard
 
             if (siguienteCard && siguienteCard.classList.contains('cards')) {
                 siguienteCard.scrollIntoView({
@@ -43,21 +84,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function chargeLanguage() {
     var language_aux = localStorage.getItem('language');
-    console.log('Valor de language_aux:', language_aux); // Imprime el valor de language_aux
     
     if (language_aux !== null) {
         language = language_aux;
     }
     
-    console.log('Valor de language:', language); // Imprime el valor de language
-    console.log('Valor de window.location.href:', window.location.href); // Imprime el valor de window.location.href
     
     if(language == 'en' && (window.location.href == dom+'/index.html' || window.location.href == dom+'/')){
-        console.log('Redirigiendo a ./en/index.html'); // Imprime un mensaje antes de redirigir
         window.location.href = dom+'/en/index.html';
     }
     else if(language == 'es' && window.location.href == dom+'/en/index.html'){
-        console.log('Redirigiendo a ./index.html'); // Imprime un mensaje antes de redirigir
         window.location.href = dom+'/index.html';
     }
 }
@@ -65,7 +101,6 @@ function chargeLanguage() {
 function changeLanguage(lang) {
     language = lang;
     localStorage.setItem('language', lang);
-    console.log('Idioma cambiado a:', lang); // Imprime un mensaje cuando el idioma cambia
 }
 
 function invokeScript(divid)
@@ -117,19 +152,3 @@ function nuevaConexion()
 	return xmlhttp; 
 }
 
-function Cargar(url, capa)
-{
-	var contenido = document.getElementById(capa);
-	var conexion = nuevaConexion();
-
-	conexion.open("GET", url,true);
-	conexion.onreadystatechange=function()
-	{ 
-		if((conexion.readyState == 4) && (conexion.status == 200))
-		{
-			contenido.innerHTML = conexion.responseText;
-			invokeScript(document.getElementById(capa));
-		}
-	} 
-	conexion.send(null);
-} 

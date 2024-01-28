@@ -28,7 +28,7 @@
 	<script>chargeLanguage();</script>
 </head>
 
-<body onload="Cargar('./html/projects.html', 'projects')">
+<body onload="setProjectOpened()">
 	
 	<div class="container m-0 p-0">
 		<div class="cards">
@@ -75,7 +75,7 @@
 				<div class="arrow"><svg width="25" height="100" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg></div>	
 			</div>
 		</div>
-		<div class="cards">
+		<div class="cards" id="project">
 			<img class="cards-img" src="../images/bg-card3.jpg" alt="">
 			<div class="card-content">
 				<div class="header-section-2">
