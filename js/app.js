@@ -22,32 +22,6 @@ function Cargar(url, capa) {
     conexion.send(null);
 }
 
-function setProjectOpened(){
-    let web_opened = localStorage.getItem('web_opened') === 'true';
-    if(web_opened){
-        Cargar('./html/webs.html', 'projects');
-    }
-    else{
-        Cargar('./html/projects.html', 'projects')
-    }
-}
-
-// Escuchar el evento y hacer scroll hasta el carrusel cuando el contenido se haya cargado
-document.addEventListener('contentLoaded', function() {
-    let carousel = document.querySelector('.carousel');
-    let scroll = document.getElementById('project');
-    if (carousel) {
-        scroll.scrollIntoView({ behavior: 'smooth' });
-    }
-    if(localStorage.getItem('web_opened')){
-        localStorage.removeItem('web_opened');
-    }
-});
-
-
-function setWebOpened(b){
-    localStorage.setItem('web_opened', b);
-}
 
 document.addEventListener('DOMContentLoaded', function() {
     var flechas = document.querySelectorAll('.arrow svg');
