@@ -8,6 +8,13 @@
     font-style: normal;
     
 }
+body{
+    overflow-x: hidden;
+    background-color: black;
+    color: white;
+    scroll-behavior: smooth;
+
+}
 @keyframes fadeIn {
     from {
         scale:50%;
