@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Simulación</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <h1>PORTFOLIO SIMULACIÓN</h1>
+    <h3>Alberto Játiva Nueda</h3>
+    <div class="project">
+    <h2>MONTAÑA RUSA</h2>
+    <p>
+        En esta simulación movemos una partícula por varios tramos a lo largo del eje x y, en cada tramo, aplicamos una velocidad y aceleración distintas.
+    </p>
+    <div id="rollerCoasterCanvas"></div>
+    <p> Link to code: 
+        <a class="github-link" href="https://github.com/aljanue/Simulation/blob/main/roller_coaster.pde" target="_blank">Montaña Rusa
+            <svg class="link-icon" width="15" height="15" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+        </a> 
+    </p>
+</div>
+
+    <div class="project">
+        <h2>MOVIMIENTO CIRCULAR</h2>
+        <p>
+            Para esta simulación se ha situado un círculo en el centro de la ventana y se ha aplicado un movimiento circular a su alrededor. Para ello, se ha utilizado la función <span>sin()</span> para calcular la posición en el eje y y la función <span>cos()</span> para calcular la posición en el eje x a la velocidad de 1 vuelta por segundo (2*Π*f, siendo f = 1). 
+        </p>
+        <p>
+            pos.x = p_circle.x + r/2 * cos(2*PI*f* millis() / 1000);
+        </p>
+        <p>
+            pos.y = p_circle.x + r/2 * sin(2*PI*f* millis() / 1000);
+        </p>
+        <div id="circleCanvas"></div>
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/blob/main/circle.pde" target="_blank">Movimiento Circular
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    <div class="project">
+        <h2>MOVIMIENTO OSCILATORIO</h2>
+        <p>
+            En esta simulación se aplican dos funciones sinusoidales distintas para generar un movimiento oscilatorio, pintando su trayectoria de tal forma que se pueda apreciar el movimiento. Para ello, vamos incrementando la posición sobre el eje horizontal de forma constante y aplicamos la suma de ambas sinusoides sobre el eje vertical, agregando las posiciones en un arraylist para trazar la trayectoria.
+        </p>
+        <p>
+            La posición en el eje y se calcula de la siguiente manera:
+        </p>
+        <p>
+            pos.y = height/2 + 10 * (0.5 * sin(1 * pos.x) + 2 * sin(2.5 * pos.x));        
+        </p>
+        
+        <div id="oscilationCanvas"></div>
+
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/blob/main/oscilation.pde" target="_blank">Movimiento Oscilatorio
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    <div class="project">
+        <h2>BUBBLE SHOOTER</h2>
+        <p>
+            En este Bubble Shooter se aplican los conocimientos prácticos sobre vectores, usándolos para disparar esferas hacia la dirección del ratón. Para ello obtenemos como referencia el centro del borde inferior de la pantalla y, desde ahí hacia la posición del mouse, al hacer click, se dispara una esfera. Esta esfera activa un booleano que no te permite disparar otra hasta que llegue a alguno de los bordes. El color de las esferas es aleatorio, para ello se utiliza el evento de hacer click para obtener tres números (R, G y B) random entre 150 y 255.        
+        </p>
+        
+        <div id="bubbleCanvas"></div>
+        
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/blob/main/bubble_shooter.pde" target="_blank">Bubble Shooter
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    
+
+    <script>
+        // Primer sketch (Montaña Rusa)
+        var rollerCoasterSketch = function( p ) {
+    let dt = 0.1, t = 0, acc1=0.8, acc2=1.3, acc3=-0.07, acc4=10, acc;
+    let a, b, p_particle, c, d, e, vel1, vel2, vel3, vel4, vel;
+    let endX;
+    let initialConditionsSet = false;
+    let initialPos;
+    let initialVelocities = [];
+    let initialAccelerations = [];
+
+    p.setup = function() {
+        let canvas = p.createCanvas(640, 300);
+        canvas.parent('rollerCoasterCanvas');
+
+        let px_init = 0.3 * p.width / 2;
+        let py_init = p.height / 2;
+        let px_end = 0.6 * p.width / 2;
+        let py_end = 0.8 * p.height / 2;
+        let px_end_2 = p.width / 2;
+        let py_end_2 = p.height / 2;
+        let px_end_3 = 1.3 * p.width / 2;
+        let py_end_3 = 0.5 * p.height / 2;
+        let px_end_4 = 1.6 * p.width / 2;
+        let py_end_4 = 1.5 * p.height / 2;
+
+        a = p.createVector(px_init, py_init); // Punto 1
+        b = p.createVector(px_end, py_end); // Punto 2
+        c = p.createVector(px_end_2, py_end_2); // Punto 3
+        d = p.createVector(px_end_3, py_end_3); // Punto 4
+        e = p.createVector(px_end_4, py_end_4); // Punto 5
+        p_particle = p.createVector(px_init, py_init); // Particula
+
+        // Obtenemos vector entre puntos
+        vel1 = p5.Vector.sub(b, a); // Resta de vectores (Restamos los puntos para obtener el vector que los une)
+        vel2 = p5.Vector.sub(c, b);
+        vel3 = p5.Vector.sub(d, c);
+        vel4 = p5.Vector.sub(e, d);
+
+        // Normalizamos (obtenemos direccion a 1 pixel/segundo)
+        vel1.normalize();
+        vel2.normalize();
+        vel3.normalize();
+        vel4.normalize();
+
+        // Aumentamos la velocidad
+        vel1.mult(5);
+        vel2.mult(20);
+        vel3.mult(6);
+        vel4.mult(35);
+
+        // Determinar la posición x final
+        endX = e.x;
+
+        // Almacenar condiciones iniciales
+        initialPos = p_particle.copy();
+        initialVelocities = [vel1.copy(), vel2.copy(), vel3.copy(), vel4.copy()];
+        initialAccelerations = [acc1, acc2, acc3, acc4];
+        initialConditionsSet = true;
+    };
+
+    p.draw = function() { 
+        p.background('#171717'); // Color de fondo (sirve para borrar lo que hay dibujado)
+
+        p.stroke(255);
+        p.line(a.x, a.y, b.x, b.y);
+        p.line(b.x, b.y, c.x, c.y);
+        p.line(c.x, c.y, d.x, d.y);
+        p.line(d.x, d.y, e.x, e.y);
+
+        p.fill(0);
+        p.ellipse(p_particle.x, p_particle.y, 10, 10);
+
+        p.stroke(255, 0, 0); // Color del contorno del circulo
+        p.fill(255, 150, 150); // Color del circulo
+        p.ellipse(a.x, a.y, 20, 20); // Creamos un circulo
+
+        p.stroke(0, 0, 255); // Color del contorno del circulo
+        p.fill(150, 150, 255); // Color del circulo
+        p.ellipse(b.x, b.y, 20, 20);
+
+        p.stroke(0, 255, 0); // Color del contorno del circulo
+        p.fill(150, 255, 150); // Color del circulo
+        p.ellipse(c.x, c.y, 20, 20);
+
+        p.stroke(163, 73, 164); // Color del contorno del circulo
+        p.fill(204, 169, 221); // Color del circulo
+        p.ellipse(d.x, d.y, 20, 20);
+
+        p.stroke(79, 49, 37); // Color del contorno del circulo
+        p.fill(226, 196, 172); // Color del circulo
+        p.ellipse(e.x, e.y, 20, 20);
+
+        // Verificar si la bola ha llegado al final
+        if (p_particle.x >= endX) {
+            // Si llega al final, reiniciar la posición de la bola y las condiciones iniciales
+            if (initialConditionsSet) {
+                p_particle.set(initialPos);
+                vel1.set(initialVelocities[0]);
+                vel2.set(initialVelocities[1]);
+                vel3.set(initialVelocities[2]);
+                vel4.set(initialVelocities[3]);
+                acc1 = initialAccelerations[0];
+                acc2 = initialAccelerations[1];
+                acc3 = initialAccelerations[2];
+                acc4 = initialAccelerations[3];
+                t = 0;
+            }
+        }
+
+        t += dt;
+        // Actualizamos la velocidad y la posición usando aceleración en función del tramo en el que nos encontramos
+        if(p_particle.x < b.x){
+            vel = vel1;
+            acc = acc1;
+        } else if(p_particle.x < c.x){
+            vel = vel2;
+            acc = acc2;
+        } else if(p_particle.x < d.x){
+            vel = vel3;
+            acc = acc3;
+        } else if(p_particle.x < e.x){
+            vel = vel4;
+            acc = acc4;
+        } else {
+            vel = p.createVector(0, 0);
+            acc = 0;
+        }
+
+        let v_copy = vel.copy();
+        v_copy.normalize();
+        let a_t = acc*dt;
+        vel.add(p5.Vector.mult(v_copy, a_t));
+        p_particle.add(p5.Vector.mult(vel, dt));
+    };
+};
+
+        // Segundo sketch (Movimiento Circular)
+        var circleSketch = function( p ) {
+          let r = 300;
+          let p_circle;
+    
+          p.setup = function() {
+            let canvas = p.createCanvas(350, 350);
+            canvas.parent('circleCanvas');
+            let x_0 = p.width / 2;
+            let y_0 = p.height / 2;
+            p_circle = p.createVector(x_0, y_0);
+          };
+    
+          p.draw = function() {
+            p.background('#171717');
+            p.stroke(255);
+            p.fill('#171717');
+            p.circle(p_circle.x, p_circle.y, r);
+            let pos = p.createVector(r, r);
+    
+            pos.x = p_circle.x + r / 2 * p.cos(2 * p.PI * 1 * p.millis() / 1000);
+            pos.y = p_circle.y + r / 2 * p.sin(2 * p.PI * 1 * p.millis() / 1000);
+    
+            p.stroke(255, 0, 0);
+            p.fill(255, 200, 200);
+            p.circle(pos.x, pos.y, 30);
+          };
+        };
+    
+        // Tercer sketch (Movimiento Oscilatorio)
+        var oscilationSketch = function( p ) {
+          let v = 0.5;
+          let d_pos;
+          let pos, pos_ini;
+    
+          p.setup = function() {
+            let canvas = p.createCanvas(600, 150);
+            canvas.parent('oscilationCanvas');
+            pos_ini = p.createVector();
+            pos_ini.x = 0;
+            pos_ini.y = p.height / 2;
+            pos = pos_ini;
+    
+            d_pos = [];
+          };
+    
+          p.draw = function() {
+            p.background('#171717');
+    
+            pos.x += v;
+    
+            pos.y = p.height / 2 + 10 * (0.5 * p.sin(1 * pos.x) + 2 * p.sin(2.5 * pos.x));
+    
+            d_pos.push(p.createVector(pos.x, pos.y));
+    
+            p.stroke(255, 0, 0);
+            p.fill(255, 200, 200);
+            p.ellipse(pos.x, pos.y, 25, 25);
+    
+            p.noFill();
+            p.stroke(255, 0, 0);
+            p.beginShape();
+            for (let i = 0; i < d_pos.length; i++) {
+              p.vertex(d_pos[i].x, d_pos[i].y);
+            }
+            p.endShape();
+          };
+        };
+    
+        // Cuarto sketch (Bubble Shooter)
+        var bubbleSketch = function( p ) {
+          let dt = 0.1, r = 150, c_r, c_g, c_b;
+          let pos_ini, p_particle, dir;
+          let shotFired = false;
+    
+          p.setup = function() {
+            let canvas = p.createCanvas(600, 300);
+            canvas.parent('bubbleCanvas');
+            pos_ini = p.createVector(p.width / 2, p.height);
+            dir = p.createVector();
+            p_particle = p.createVector();
+          };
+    
+          p.draw = function() {
+            p.background('#171717');
+    
+            p.stroke(255);
+            p.fill('#171717');
+            p.circle(pos_ini.x, pos_ini.y, r / 2);
+    
+            p.line(pos_ini.x, pos_ini.y, p.mouseX, p.mouseY);
+            p.fill(c_r, c_g, c_b);
+            p.stroke(255);
+    
+            if (shotFired) {
+              p_particle.add(p5.Vector.mult(dir, dt));
+              p.circle(p_particle.x, p_particle.y, 25);
+    
+              if (p_particle.y < 0 || p_particle.x < 0 || p_particle.x > p.width) {
+                shotFired = false;
+                p_particle.set(pos_ini);
+              }
+            }
+          };
+    
+          p.mousePressed = function() {
+            if (!shotFired) {
+              c_r=p.random(150, 255);
+              c_g=p.random(150, 255);
+              c_b=p.random(150, 255);
+              p_particle.set(pos_ini);
+              dir = p5.Vector.sub(p.createVector(p.mouseX, p.mouseY), pos_ini).normalize().mult(45);
+              shotFired = true;
+            }
+          };
+        };
+    
+        // Crear los sketches
+        new p5(rollerCoasterSketch);
+        new p5(circleSketch);
+        new p5(oscilationSketch);
+        new p5(bubbleSketch);
+      </script>
+
+</body>
+</html>
