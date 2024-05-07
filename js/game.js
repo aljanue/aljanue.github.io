@@ -11,6 +11,7 @@ let loader = new GLTFLoader();
 // Crear la escena
 let scene = new THREE.Scene();
 
+let about_me_position, sneakers_position, k_position, cat_position, laptop_position;
 fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
     const geometry = new TextGeometry( 'About me', {
         font: font,
@@ -23,14 +24,15 @@ fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
       bevelOffset: 0,
       bevelSegments: 5
     } );
-    const material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa }) // Cambiar el color del texto a blanco
+    const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa }) // Cambiar el material a MeshPhongMaterial
 
     // Crear un objeto de malla con la geometría del texto y el material
     const textMesh = new THREE.Mesh(geometry, material);
-    textMesh.position.y=1;
+    textMesh.position.y=4;
     textMesh.position.z=100;
     textMesh.position.x=100;
     textMesh.rotation.y=Math.PI;
+    about_me_position = textMesh.position;
     // Añadir el objeto de malla a la escena
     textMesh.traverse(function (child) {
         if (child.isMesh) {
@@ -39,118 +41,12 @@ fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
     });
     scene.add(textMesh);
 } );
-fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
-    const geometry = new TextGeometry( 'Contact', {
-        font: font,
-      size: 15,
-      height: 2,
-      curveSegments: 12,
-      bevelEnabled: false,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5
-    } );
-    const material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa }) // Cambiar el color del texto a blanco
 
-    // Crear un objeto de malla con la geometría del texto y el material
-    const textMesh = new THREE.Mesh(geometry, material);
-    textMesh.position.y=1;
-    textMesh.position.z=50;
-    textMesh.position.x=300;
-    textMesh.rotation.y=Math.PI+Math.PI/4;
-    textMesh.traverse(function (child) {
-        if (child.isMesh) {
-            child.castShadow = true;
-        }
-    });
-    // Añadir el objeto de malla a la escena
-    scene.add(textMesh);
-} );
-fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
-    const geometry = new TextGeometry( 'Projects', {
-        font: font,
-      size: 15,
-      height: 2,
-      curveSegments: 12,
-      bevelEnabled: false,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5
-    } );
-    const material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa }) // Cambiar el color del texto a blanco
+setText("Contact", 4, 50, 300, Math.PI+Math.PI/4);
+setText("Projects", 5, 100, -100, Math.PI/2+0.4);
+setText("Certificates", 4, -200, 200, -Math.PI/4);
+setText("Skills", 4, -200, -200, 1.2);
 
-    // Crear un objeto de malla con la geometría del texto y el material
-    const textMesh = new THREE.Mesh(geometry, material);
-    textMesh.position.y=5;
-    textMesh.position.z=100;
-    textMesh.position.x=-100;
-    textMesh.rotation.y=Math.PI/2+0.4;
-    textMesh.traverse(function (child) {
-        if (child.isMesh) {
-            child.castShadow = true;
-        }
-    });
-    // Añadir el objeto de malla a la escena
-    scene.add(textMesh);
-} );
-fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
-    const geometry = new TextGeometry( 'Certificates', {
-        font: font,
-      size: 15,
-      height: 2,
-      curveSegments: 12,
-      bevelEnabled: false,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5
-    } );
-    const material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa }) // Cambiar el color del texto a blanco
-
-    // Crear un objeto de malla con la geometría del texto y el material
-    const textMesh = new THREE.Mesh(geometry, material);
-    textMesh.position.y=1;
-    textMesh.position.z=-200;
-    textMesh.position.x=200;
-    textMesh.rotation.y = -Math.PI/4;
-    textMesh.traverse(function (child) {
-        if (child.isMesh) {
-            child.castShadow = true;
-        }
-    });
-    // Añadir el objeto de malla a la escena
-    scene.add(textMesh);
-} );
-fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
-    const geometry = new TextGeometry( 'Skills', {
-        font: font,
-      size: 15,
-      height: 2,
-      curveSegments: 12,
-      bevelEnabled: false,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5
-    } );
-    const material = new THREE.MeshBasicMaterial({ color: 0xaaaaaa }) // Cambiar el color del texto a blanco
-
-    // Crear un objeto de malla con la geometría del texto y el material
-    const textMesh = new THREE.Mesh(geometry, material);
-    textMesh.position.y=1;
-    textMesh.position.z=-200;
-    textMesh.position.x=-200;
-    textMesh.rotation.y=1.2;
-    textMesh.traverse(function (child) {
-        if (child.isMesh) {
-            child.castShadow = true;
-        }
-    });
-    // Añadir el objeto de malla a la escena
-    scene.add(textMesh);
-} );
 // Crear la cámara
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 camera.position.z = -15;
@@ -165,15 +61,15 @@ renderer.shadowMap.enabled = true;
 // Añadir controles de órbita para permitir la interacción con la cámara
 let controls = new OrbitControls(camera, renderer.domElement);
 
-let ambientLight = new THREE.AmbientLight(0x404040); // luz suave gris
+let ambientLight = new THREE.AmbientLight(0xffffff); // luz suave gris
 scene.add(ambientLight);
-let directionalLight = new THREE.DirectionalLight(0xaaaaaa, 0.2);
+let directionalLight = new THREE.DirectionalLight(0xaaaaaa, 0.5);
 scene.add(directionalLight);
 
 // Crear las paredes, el suelo y el techo
 let ancho_habitacion = 700; 
 let geometry = new THREE.BoxGeometry(0.1, ancho_habitacion,ancho_habitacion); // Ajusta el tamaño de las paredes aquí
-let material = new THREE.MeshStandardMaterial({color: 0x333333}); // Ajusta el color de las paredes aquí
+let material = new THREE.MeshStandardMaterial({color: 0x151515}); // Ajusta el color de las paredes aquí
 
 let walls = [
     {position: [-ancho_habitacion/2, ancho_habitacion/2, 0], rotation: [0, 0, 0]}, // Pared izquierda
@@ -189,7 +85,7 @@ for (const element of walls) {
     wall.position.set(...element.position);
     wall.rotation.set(...element.rotation);
     wall.receiveShadow = true;
-
+    wall.userData.collidable=true;
     scene.add(wall);
 }
 
@@ -211,6 +107,77 @@ loader.load('../3d/car/scene.gltf', function(gltf) {
     console.error(error);
 });
 
+let sneakers;
+loader.load('../3d/sneakers/source/Seen_low_2K.glb', function (gltf) {
+    // Añadir el modelo cargado a la escena
+    sneakers = gltf.scene;
+    sneakers.traverse(function(node) {
+        if (node instanceof THREE.Mesh) {
+            node.castShadow = true;
+        }
+    });
+    sneakers.scale.set(60, 60, 60); // Ajusta los valores según sea necesario
+    sneakers.position.set(-120, 0, 150); // Ajusta los valores según sea necesario
+    sneakers.rotation.y = Math.PI+Math.PI/2;
+    sneakers_position = sneakers.position;
+    scene.add(sneakers);
+}, undefined, function (error) {
+    console.error(error);
+});
+
+let cat;
+let burger;
+loader.load('../3d/burger/scene.gltf', function (gltf) {
+    // Añadir el modelo cargado a la escena
+    burger = gltf.scene;
+    burger.traverse(function(node) {
+        if (node instanceof THREE.Mesh) {
+            node.castShadow = true;
+        }
+    });
+    burger.scale.set(0.02, 0.02, 0.02); // Ajusta los valores según sea necesario
+    burger.position.set(-166, 2, 92); // Ajusta los valores según sea necesario
+    burger.rotation.y = -Math.PI/2 + 0.4;
+    scene.add(burger);
+}, undefined, function (error) {
+    console.error(error);
+});
+loader.load('../3d/cat/scene.gltf', function (gltf) {
+    // Añadir el modelo cargado a la escena
+    cat = gltf.scene;
+    cat.traverse(function(node) {
+        if (node instanceof THREE.Mesh) {
+            node.castShadow = true;
+        }
+    });
+    cat.scale.set(20, 20, 20); // Ajusta los valores según sea necesario
+    cat.position.set(-170,0,89); // Ajusta los valores según sea necesario
+    cat.rotation.y = Math.PI/2+0.5;
+    cat_position = cat.position;
+    scene.add(cat);
+}, undefined, function (error) {
+    console.error(error);
+});
+
+let k;
+loader.load('../3d/k/nocuk_logo.glb', function (gltf) {
+    // Añadir el modelo cargado a la escena
+    k = gltf.scene;
+    k.traverse(function(node) {
+        if (node instanceof THREE.Mesh) {
+            node.castShadow = true;
+        }
+    });
+    k.scale.set(3, 3, 3); // Ajusta los valores según sea necesario
+    k.position.set(-150,4,25); // Ajusta los valores según sea necesario
+    k.rotation.y = Math.PI/2-0.2;
+    k_position = k.position;
+    scene.add(k);
+}, undefined, function (error) {
+    console.error(error);
+});
+
+
 // Crear un array para almacenar las lámparas
 let lamps = [];
 let lights = [];
@@ -229,7 +196,7 @@ for (let i = 0; i < 2; i++) {
             lamps.push(gltf.scene);
 
             // Crear una luz puntual
-let spotLight = new THREE.SpotLight(0xaaaaaa, 0.2);
+let spotLight = new THREE.SpotLight(0x999999, 0.4);
 // Ajustar la posición de la luz para que coincida con la de la lámpara
 spotLight.position.copy(gltf.scene.position);
 // Hacer que la luz mire hacia abajo
@@ -336,6 +303,23 @@ function animate() {
 
         // Actualizar los controles de órbita
         controls.update();
+        if(sneakers_position != null && cat_position != null && k_position != null){ 
+            let distance_snakers = car.position.distanceTo(sneakers_position);
+            let distance_cat = car.position.distanceTo(cat_position);
+            let distance_k = car.position.distanceTo(k_position);
+            if(distance_snakers<25){
+                document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT";
+            }
+            else if(distance_k < 10){
+                document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT 3";
+            }else if(distance_cat < 15){
+                document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT 2";
+            }
+            else{
+                // document.getElementById("text").textContent = car.position.x + " " + car.position.z;
+                document.getElementById("text").textContent="IN PROGRESS";
+            }
+        }
     }
 
     requestAnimationFrame(animate);
@@ -344,3 +328,31 @@ function animate() {
 
 // Llamar a la función de animación
 animate();
+
+
+function setText(text, y, z, x, ang){
+    fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
+        const geometry = new TextGeometry( text, {
+            font: font,
+            size: 15,
+            height: 2,
+            curveSegments: 12,
+            bevelEnabled: false
+        } );
+        const material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa }) // Cambiar el material a MeshPhongMaterial
+    
+        // Crear un objeto de malla con la geometría del texto y el material
+        const textMesh = new THREE.Mesh(geometry, material);
+        textMesh.position.y=y;
+        textMesh.position.z=z;
+        textMesh.position.x=x;
+        textMesh.rotation.y=ang;
+        textMesh.traverse(function (child) {
+            if (child.isMesh) {
+                child.castShadow = true;
+            }
+        });
+        // Añadir el objeto de malla a la escena
+        scene.add(textMesh);
+    } );
+}

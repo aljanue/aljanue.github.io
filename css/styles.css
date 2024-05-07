@@ -952,6 +952,9 @@ a:hover, button:hover {
     fill: white;
     transition: all 0.3s ease;
 }
+.game-body{
+    cursor: none;
+}
 .game-mode-icon p{
     color:white;
     text-wrap: wrap;

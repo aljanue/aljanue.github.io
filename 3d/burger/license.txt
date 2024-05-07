@@ -1,0 +1,11 @@
+Model Information:
+* title:	burger
+* source:	https://sketchfab.com/3d-models/burger-8bd6e8b9603e4168aa3e38d299f28595
+* author:	negar (https://sketchfab.com/negar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "burger" (https://sketchfab.com/3d-models/burger-8bd6e8b9603e4168aa3e38d299f28595) by negar (https://sketchfab.com/negar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
