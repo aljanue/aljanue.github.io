@@ -929,6 +929,49 @@ a:hover, button:hover {
         width: 70%;
     }
 }
+
+.game-mode-icon{
+    fill: white;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    margin:40px 60px;
+    z-index: 99999999;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+    width: 24px;
+    cursor: url('../images/cursor-big.svg'), auto !important;
+    text-decoration: none;
+}
+.game-mode-icon svg{
+    width: 35px;
+    height: 35px;
+    fill: white;
+    transition: all 0.3s ease;
+}
+.game-mode-icon p{
+    color:white;
+    text-wrap: wrap;
+    line-height: 1;
+}
+.game-body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+}
+.game-body p{
+    position: absolute;
+    top: 80%;
+    left: 0;
+    width: 100%;
+    font-size: 1.2rem;
+    z-index: 9999999;
+}
 @media screen and (max-width: 830px){
     .project-content{
         margin-top: 40px;
