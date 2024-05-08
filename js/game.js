@@ -353,7 +353,7 @@ function animate() {
                 document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT 4"
             else{
                 // document.getElementById("text").textContent = car.position.x + " " + car.position.z;
-                document.getElementById("text").textContent=car.position.x+" "+car.position.z;
+                document.getElementById("text").textContent="IN PROGRESS";
             }
         }
     }
