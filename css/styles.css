@@ -952,9 +952,7 @@ a:hover, button:hover {
     fill: white;
     transition: all 0.3s ease;
 }
-.game-body{
-    cursor: none;
-}
+
 .game-mode-icon p{
     color:white;
     text-wrap: wrap;
@@ -966,6 +964,7 @@ a:hover, button:hover {
     overflow: hidden;
     background-color: black;
     text-align: center;
+    cursor: none;
 }
 .game-body p{
     position: absolute;
@@ -974,6 +973,41 @@ a:hover, button:hover {
     width: 100%;
     font-size: 1.2rem;
     z-index: 9999999;
+    display: none;
+}
+#progressContainer{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #1b1b1b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#progressContainer h1{
+    color: #4e4e4e;
+    font-family: 'Roboto Condensed';
+    font-size: 8rem;
+    font-weight: 500;
+    margin-left: 20px;
+    width: 100%;
+    text-align: left;
+}
+#progressBar{
+    width: 0%;
+    height: 30%;
+    background-color: #4e4e4e;
+}
+#move_tips{
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 20px;
+    width: 150px;
+    height: auto;
+    display: none;
 }
 @media screen and (max-width: 830px){
     .project-content{

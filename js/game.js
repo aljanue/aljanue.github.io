@@ -1,17 +1,31 @@
 import * as THREE from "three";
-import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
-import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from "three/addons/loaders/FontLoader.js";
 
+// Crear el LoadingManager
+const manager = new THREE.LoadingManager();
+
+// Crear la barra de carga
+const progressBar = document.getElementById('progressBar');
+const progressContainer = document.getElementById('progressContainer');
+// Configurar el método onProgress
+manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    progressBar.style.width = (itemsLoaded / itemsTotal * 100) + '%';
+};
+
+// Configurar el método onLoad
+manager.onLoad = function () {
+    progressContainer.style.display = 'none'; // Ocultar la barra de carga
+    document.getElementById("text").style.display = 'block';
+    document.getElementById("move_tips").style.display = 'block';
+};
 const fontLoader = new FontLoader();
-let loader = new GLTFLoader();
-// Crear la escena
+let loader = new GLTFLoader(manager);
 let scene = new THREE.Scene();
 
-let about_me_position, sneakers_position, k_position, cat_position, laptop_position;
+let about_me_position, sneakers_position, k_position, cat_position, screen_position;
 fontLoader.load( '../fonts/Roboto_Bold.json', function ( font ) {
     const geometry = new TextGeometry( 'About me', {
         font: font,
@@ -177,6 +191,24 @@ loader.load('../3d/k/nocuk_logo.glb', function (gltf) {
     console.error(error);
 });
 
+let screen;
+loader.load('../3d/screen/untitled.glb', function (gltf) {
+    // Añadir el modelo cargado a la escena
+    screen = gltf.scene;
+    screen.traverse(function(node) {
+        if (node instanceof THREE.Mesh) {
+            node.castShadow = true;
+        }
+    });
+    screen.scale.set(10, 10, 10); // Ajusta los valores según sea necesario
+    screen.position.set(-205,0,-25); // Ajusta los valores según sea necesario
+    screen.rotation.y = Math.PI/2-0.2;
+    screen_position = screen.position;
+    scene.add(screen);
+}, undefined, function (error) {
+    console.error(error);
+});
+
 
 // Crear un array para almacenar las lámparas
 let lamps = [];
@@ -284,6 +316,8 @@ function animate() {
             acceleration = 0.1;
             maxSpeed = 0.3;
         }
+        if(keys.a || keys.s || keys.d || keys.w)
+            document.getElementById("move_tips").style.display = 'none';
 
         // Mover el coche a la velocidad actual
         car.translateZ(speed);
@@ -307,6 +341,7 @@ function animate() {
             let distance_snakers = car.position.distanceTo(sneakers_position);
             let distance_cat = car.position.distanceTo(cat_position);
             let distance_k = car.position.distanceTo(k_position);
+            let distance_screen = car.position.distanceTo(screen_position);
             if(distance_snakers<25){
                 document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT";
             }
@@ -314,10 +349,11 @@ function animate() {
                 document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT 3";
             }else if(distance_cat < 15){
                 document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT 2";
-            }
+            }else if(distance_screen < 20)
+                document.getElementById("text").textContent="PRESS [SPACE] TO VIEW THE PROJECT 4"
             else{
                 // document.getElementById("text").textContent = car.position.x + " " + car.position.z;
-                document.getElementById("text").textContent="IN PROGRESS";
+                document.getElementById("text").textContent=car.position.x+" "+car.position.z;
             }
         }
     }
