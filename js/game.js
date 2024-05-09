@@ -316,6 +316,7 @@ function animate() {
             acceleration = 0.1;
             maxSpeed = 0.3;
         }
+        
         if(keys.a || keys.s || keys.d || keys.w)
             document.getElementById("move_tips").style.display = 'none';
 
