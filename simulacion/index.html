@@ -86,6 +86,25 @@
         </p>
     </div>
     <div class="project">
+        <h2>PLANO INCLINADO</h2>
+        <p>
+            Se aplica gravedad y rozamiento sobre una esfera 2D. La gravedad, al afectar sobre un objeto situado en un plano inclinado, se divide en ambos ejes, utilizando el seno y el coseno.        
+        </p>
+        <p>
+            PVector _Fg = new PVector(G * sin(angle), G * cos(angle));       
+        </p>
+        
+        <div class="video-container">
+            <iframe class="video" src="https://www.youtube.com/embed/MGl4BFbItqs?autoplay=1&loop=1&playlist=MGl4BFbItqs&controls=0&mute=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+        </div>
+        
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/blob/main/inclinado.pde" target="_blank">Inclinado
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    <div class="project">
         <h2>SPLASH</h2>
         <p>
             Al cargar, se dibuja una elipse en el centro de la pantalla. Cuando se hace clic dentro de la elipse, se genera un sistema de partículas que emana desde la posición del clic. El sistema de partículas consta de múltiples partículas que se mueven con velocidades aleatorias y se desvanecen con el tiempo. La interacción con el usuario se logra mediante la detección de clics del mouse y el seguimiento de la posición del cursor para generar el sistema de partículas en la ubicación adecuada. La lógica del sistema de partículas se maneja a través de las clases Particle y ParticleSystem, donde cada partícula tiene propiedades de posición, velocidad y aceleración, y el sistema de partículas controla la generación y la actualización de las partículas en el lienzo.        
@@ -95,6 +114,70 @@
         
         <p> Link to code: 
             <a class="github-link"href="https://github.com/aljanue/Simulation/tree/main/splash" target="_blank">Splash!
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    <div class="project">
+        <h2>Flotar</h2>
+        <p>
+            Una pelota cae al agua a causa de la gravedad y, mediante las fuerzas de flotabilidad parcial y total, esta es capaz de mantenerse al blorde de la superficie líquida.        
+            Esto se consigue mirando si la elipse se encuentra en el límite y, si es así, se aplica la fuerza de flotabilidad total, donde actúa la densidad del líquido y el volumen de la esfera.
+        </p>
+        <p>
+            Vs = 4 * PI * r * r * r / 3;<br>FB = rho * g * Vs;
+        </p>
+        <p>
+            Cuando la esfera está totalmente sumergida, el volumen se calcula de la siguiente manera:
+        </p>
+        <p>
+            float h = s.y + r - limite;<br>
+            float a_f = sqrt(2 * h * r - h * h);<br>
+            Vs = (3 * a_f * a_f + h * h) * PI * h / 6;<br>
+            FB = rho * g * Vs;
+        </p>
+        
+        <div class="video-container">
+            <iframe class="video" src="https://www.youtube.com/embed/TNX4Ux_A6qw?autoplay=1&loop=1&playlist=TNX4Ux_A6qw&controls=0&mute=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+        </div>
+
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/blob/main/flotar/flotar.pde" target="_blank">Flotar
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    <div class="project">
+        <h2>Flotar + SPLASH</h2>
+        <p>
+            Esta simulación trata de juntar los dos ejercicios mostrados anteriormente para que, caundo la esfera "colisione" con el plano, se emitan partículas fingiendo un efecto de salpicadura.
+            <br>
+            Esto se consigue añadiendo una bandera para que, cuando la esfera entra por primera vez en contacto con el líquido, se active el sistema de partículas. Esta bandera sirve para únicamente se active la primera vez y que, cuando la fuerza de flotabilidad saque aunque sea un pixel la esfera del agua, on se vuelva a activar para así, conseguir un efecto más realista.
+        </p>
+        
+        <div class="video-container">
+            <iframe class="video" src="https://www.youtube.com/embed/SBI5r887LRY?autoplay=1&loop=1&playlist=SBI5r887LRY&controls=0&mute=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+        </div>
+        
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/tree/main/flotarSplash" target="_blank">Flotar + Splash!
+                <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
+            </a> 
+        </p>
+    </div>
+    <div class="project">
+        <h2>Fuente</h2>
+        <p>
+            Se crean partículas con una velocidad dada por el seno y coseno de un ángulo determinado. También se utiliza una variable lifespan para reducir la opacidad de estas hasta eliminarlas del Array.<br>
+            La gravedad actúa sobre el eje y generando ese efecto de parábola en las partículas.
+        </p>
+        
+        <div class="video-container">
+            <iframe class="video" src="https://www.youtube.com/embed/jNSRyGHRmWw?autoplay=1&loop=1&playlist=jNSRyGHRmWw&controls=0&mute=1&modestbranding=1&rel=0&showinfo=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        
+        </div>
+        
+        <p> Link to code: 
+            <a class="github-link"href="https://github.com/aljanue/Simulation/tree/main/fuente" target="_blank">Fuente
                 <svg class="link-icon"width="15" height="15"viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M14 4h-13v18h20v-11h1v12h-22v-20h14v1zm10 5h-1v-6.293l-11.646 11.647-.708-.708 11.647-11.646h-6.293v-1h8v8z"/></svg>
             </a> 
         </p>
