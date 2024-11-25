@@ -88,7 +88,55 @@ body{
 body {
     cursor: url('../images/cursor.svg'), auto; 
 }
-
+.new-portfolio-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 485px;
+    height: 200px;
+    padding: 20px;
+    position: fixed;
+    z-index: 999999999;
+    backdrop-filter: blur(3px);
+    margin: 5vw;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    color:white;
+    left: calc(50% - 242.5px - 5vw);
+}
+@media screen and (max-width: 500px){
+    .new-portfolio-container{
+        width: 90vw;
+        left: 0;
+    }
+    .new-portfolio-container h1{
+        font-size: 1.3rem !important;
+        font-weight: 400 !important;
+    }
+    .new-portfolio-container a{
+        font-size: 1rem !important;
+        font-weight: 300 !important;
+    }
+}
+.new-portfolio-container h1{
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.new-portfolio-container a{
+    padding: 8px 15px;
+    background-color: rgb(197, 197, 197);
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: center;
+    color:black;
+    border-radius: 8px;
+}
 a:hover, button:hover {
     cursor: url('../images/cursor-big.svg'), auto !important; 
 }
@@ -135,6 +183,7 @@ a:hover, button:hover {
     justify-content: center;
     align-items: center;
     position: sticky;
+    z-index:9999;
     top:0;
     color: white;
     background-color: black;
@@ -155,6 +204,7 @@ a:hover, button:hover {
 
 .card-content{
     position: absolute;
+    z-index: 99999;
     left: 0;
     top: 0;
     width: 100%;
